@@ -9,6 +9,9 @@ temp/
 *.so
 
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 .DS_Store
 
@@ -56,6 +59,8 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+coverage/
+.vitest/
 
 # Translations
 *.mo
@@ -171,10 +176,26 @@ cython_debug/
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+.idea/
+.vscode/
+
+# Editor temp files
+*.swp
+*.swo
+*~
 
 # Ruff stuff:
 .ruff_cache/
 
 # PyPI configuration file
 .pypirc
+
+# Max/MSP backup files
+*.maxpat.bak
+*.maxhelp.bak
+*.maxpat~
+
+# Max/MSP compiled externals
+*.mxo
+*.mxe
+*.mxe64
