@@ -84,7 +84,14 @@ function forward_response_to_node(json_str) {
 // RESPONSE HANDLING
 // ========================================
 
-// Handle responses from mcp-client.js instances
+// Handle responses from mcp-client.js instances via [send/receive mcp_router_events]
+function response() {
+    var json_str = arrayfromargs(arguments).join(" ");
+    forward_response_to_node(json_str);
+    log_info("Forwarded response to node");
+}
+
+// Handle responses from mcp-client.js instances via messnamed (legacy)
 function mcp_reply() {
     log_debug("mcp_reply() ENTERED, arguments.length=" + arguments.length);
     var json_str = arrayfromargs(arguments).join(" ");
@@ -99,6 +106,17 @@ function mcp_reply() {
 
 // Receive command/request from max_mcp_node.js via inlet
 function anything() {
+    // Special handling for response messages from mcp-client.js
+    if (messagename === "response") {
+        if (arguments.length > 0) {
+            var json_str = arrayfromargs(arguments).join(" ");
+            forward_response_to_node(json_str);
+            log_debug("Forwarded response to node, length=" + json_str.length);
+        }
+        return;
+    }
+
+    // Handle command/request messages
     var msg = arrayfromargs(messagename, arguments);
 
     if (msg.length < 1) return;

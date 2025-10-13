@@ -199,3 +199,6 @@ cython_debug/
 *.mxo
 *.mxe
 *.mxe64
+
+# Japanese documentation (for internal review only)
+*_ja.md

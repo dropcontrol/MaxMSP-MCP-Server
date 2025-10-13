@@ -32,6 +32,17 @@ function anything() {
     var data = safe_parse_json(msg);
     if (!data) return;
 
+    // If patch_id is present, forward to mcp-router.js via outlet 0
+    if (data.patch_id) {
+        post("max_mcp: Forwarding to router, patch_id=" + data.patch_id + "\n");
+        // Use outlet if directly connected, or use messnamed for cross-patch communication
+        outlet(0, msg);
+        // Also send via messnamed in case router is in a different patch
+        messnamed("mcp_router_inlet", msg);
+        return;
+    }
+
+    // Otherwise, handle locally (for backward compatibility with single-patch mode)
     switch (data.action) {
         case "fetch_test":
             if (data.request_id) {

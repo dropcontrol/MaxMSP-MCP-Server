@@ -222,8 +222,10 @@ function handle_command(data) {
 }
 
 function handle_request(data) {
+  log_info(`handle_request called: ${JSON.stringify(data).substring(0, 100)}`);
   if (data && data.patch_id) {
     Max.outlet("request", JSON.stringify(data));
+    log_info(`Forwarded request to mcp-router for patch_id=${data.patch_id}`);
   } else {
     log_warn("request without patch_id received");
   }
