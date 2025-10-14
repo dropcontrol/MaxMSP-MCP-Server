@@ -202,3 +202,10 @@ cython_debug/
 
 # Japanese documentation (for internal review only)
 *_ja.md
+
+# Git-dotfiles managed files
+.claude
+CLAUDE.md
+
+# Serena MCP
+.serena/
