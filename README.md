@@ -32,7 +32,6 @@ Check out the [full video](https://www.youtube.com/watch?v=Ns89YuE5-to) where yo
 ## Documentation
 
 - **[Specification (English)](docs/SPECIFICATION.md)** - Complete technical specification
-- **[仕様書（日本語）](docs/SPECIFICATION_ja.md)** - 完全な技術仕様書
 - **[E2E Test Guide](MaxMSP_Agent/test/E2E_TEST_GUIDE.md)** - End-to-end testing guide
 - **[Original README](README_ORIGINAL.md)** - Original project README
 
